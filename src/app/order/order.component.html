@@ -1,0 +1,31 @@
+<form (ngSubmit)="save()" class="was-validated">
+<label >Pizza Id : </label>
+<input type="number" min="10000" max="100000" class="form-control" name="id" [(ngModel)]="p.id"  required>
+<br>
+<label >Name</label>
+<input type="text" class="form-control" name="name" [(ngModel)]="p.name"  required>
+<br>
+<label >Pizza Size : </label>
+<select name="size" class="form-control" [(ngModel)]="p.size" (change)="onChangeSize($event)" required>
+    <option *ngFor="let s of sizes" [value]="s">{{s}}</option>
+</select>
+<br>
+<label >Pizza Type : </label>
+<select name="type" class="form-control" [(ngModel)]="p.type" (change)="onChangeType($event)" required>
+    <option *ngFor="let t of types" [value]="t">{{t}}</option>
+</select>
+<br>
+<label >Pizza Crust : </label>
+<select name="crust" class="form-control" [(ngModel)]="p.crust" (change)="onChangeCrust($event)" required>
+    <option *ngFor="let c of crusts" [value]="c">{{c}}</option>
+</select>
+<br>
+<label >Number of Toppings : </label>
+<input type="number" min="1" max="10" class="form-control" name="toppings" [(ngModel)]="p.toppings" (change)="onChange($event)" required pattern="[0-9]{0,1}">
+<br>
+<!-- <h4 name="price"[(ngModel)]="p.price">Final Price -  <span class="text-info">{{text}}</span></h4> -->
+<label >Final Price</label>
+<input type="number" class="form-control" name="price" [(ngModel)]="p.price" value="{{text}}" required pattern="[0-9]{0,1}" readonly>
+<br>
+<button type="submit" class="btn btn-primary">Order Now!!!</button>
+</form>
